@@ -47,7 +47,7 @@ The project uses the following libraries:
 ## Building and Deploying
 
 1. **Build:**
-   - The above Maven command will compile the project and package it into a WAR file.
+   - The above Maven command will compile and package the project into a WAR file.
 
 2. **Deploy:**
    - Copy the generated WAR file (typically located in the `target` directory) to the Tomcat `webapps` folder.
@@ -59,12 +59,10 @@ The project uses the following libraries:
 ## Usage
 
 - **For testing APIs endpoints**
-  - Kindly view the attached postman collection.
+  - Please take a look at the postman collection I've attached.
 
 ## Future Enhancements
 
 - **Security:** Implementation of authentication and authorization mechanisms.
-- **Validation:** Robust server-side validation of incoming data.
-- **Error Handling:** Enhanced error logging and user-friendly error messages.
 - **Scalability:** Exploration of connection pooling and caching mechanisms to improve performance under load.
 - **Testing:** Integration and unit tests to ensure reliability and maintainability.
