@@ -3,6 +3,7 @@ package com.productCatalog.application.handlers;
 import java.io.IOException;
 
 import com.productCatalog.application.controllers.BaseController;
+import com.productCatalog.application.exceptions.NotFoundException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,16 +16,16 @@ public class NotFoundHandler extends BaseController {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		sendErrorResponse(resp, HttpServletResponse.SC_NOT_FOUND, "resource not found");
+		throw new NotFoundException("resource not found");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		sendErrorResponse(resp, HttpServletResponse.SC_NOT_FOUND, "resource not found");
+		throw new NotFoundException("resource not found");
 	}
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		sendErrorResponse(resp, HttpServletResponse.SC_NOT_FOUND, "resource not found");
+		throw new NotFoundException("resource not found");
 	}
 }

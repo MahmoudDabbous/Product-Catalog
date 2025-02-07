@@ -15,17 +15,17 @@ public class ServerErrorHandler extends BaseController {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		sendErrorResponse(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "500: internal server error");
+		throw new RuntimeException("500: internal server error");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		sendErrorResponse(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "500: internal server error");
+		throw new RuntimeException("500: internal server error");
 	}
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		sendErrorResponse(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "500: internal server error");
+		throw new RuntimeException("500: internal server error");
 	}
 
 }

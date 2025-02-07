@@ -14,7 +14,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.productCatalog.application.db.DatabaseConnection;
-import com.productCatalog.application.dto.ErrorResponse;
 import com.productCatalog.application.exceptions.BadRequestException;
 import com.productCatalog.application.validation.Validatable;
 
@@ -94,63 +93,6 @@ public class BaseController extends HttpServlet {
 			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		}
 	}
-
-	protected void sendErrorResponse(HttpServletResponse resp, int statusCode, String message) {
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		resp.setStatus(statusCode);
-
-		ErrorResponse errorResponse = new ErrorResponse(statusCode, message);
-		try {
-			String jsonError = gson.toJson(errorResponse);
-			LOGGER.info("Sending error response: " + jsonError);
-			resp.getWriter().write(jsonError);
-		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "Error writing error response: {0}", e.getMessage());
-			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-		}
-	}
-
-	protected void sendErrorResponse(HttpServletResponse resp, int statusCode) {
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		resp.setStatus(statusCode);
-		LOGGER.info("Sending error response with status code: " + statusCode);
-	}
-
-	protected void sendErrorResponse(HttpServletResponse resp, int statusCode, List<String> errors) {
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		resp.setStatus(statusCode);
-
-		ErrorResponse errorResponse = new ErrorResponse(statusCode, errors);
-		try {
-			String jsonError = gson.toJson(errorResponse);
-			LOGGER.info("Sending error response: " + jsonError);
-			resp.getWriter().write(jsonError);
-		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "Error writing error response: {0}", e.getMessage());
-			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	protected void sendErrorResponse(HttpServletResponse resp, int statusCode, String message, List<String> errors) {
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		resp.setStatus(statusCode);
-
-		ErrorResponse errorResponse = new ErrorResponse(statusCode, message ,errors);
-		try {
-			String jsonError = gson.toJson(errorResponse);
-			LOGGER.info("Sending error response: " + jsonError);
-			resp.getWriter().write(jsonError);
-		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "Error writing error response: {0}", e.getMessage());
-			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-		}
-	}
-
-
 
 	@Override
 	public void destroy() {
