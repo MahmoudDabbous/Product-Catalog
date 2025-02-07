@@ -30,7 +30,7 @@ The project uses the following libraries:
 
 - **Jakarta Servlet API:** For building RESTful endpoints.
 - **Gson:** For converting Java objects to JSON and vice versa.
-- **MySQL Connector/J:** For establishing JDBC connections with the MySQL database.
+- **MySQL Java Connector:** For establishing JDBC connections with the MySQL database.
 
 ## Project Setup
 
